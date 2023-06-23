@@ -86,5 +86,6 @@ public class Homework {
         long days = (min/minutesInHour/hourInDay) % daysInShortYear;
 
         System.out.println(min + " minutes is approximately " + years + " years and " + days + " days");
+
     }
 }
