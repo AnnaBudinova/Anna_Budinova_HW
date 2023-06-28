@@ -3,11 +3,14 @@ import java.util.Scanner;
 
 public class Homework {
     public static void main(String[] args) {
-        int number = findSmallestNumber(45,4,-36);
+        int number = averageNumber(10,5,15);
+        int number1 = findSmallestNumber(6,-5,4);
         System.out.println(number);
+        System.out.println(number1);
+
     }
 
-  /*  static int findSmallestNumber(int num1, int num2, int num3) {
+      static int findSmallestNumber(int num1, int num2, int num3) {
         int smallestNumber = num1;
 
         if (smallestNumber > num2) {
@@ -18,9 +21,9 @@ public class Homework {
             smallestNumber = num3;
         }
         return smallestNumber;
-    }*/
+    }
 
-     public static int findSmallestNumber(int num1, int num2, int num3) {
+     public static int averageNumber(int num1, int num2, int num3) {
         return  (num1 + num2 + num3) / 3;
     }
 }
