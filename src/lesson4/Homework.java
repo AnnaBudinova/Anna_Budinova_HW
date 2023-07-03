@@ -13,6 +13,7 @@ public class Homework {
         largestNumber();
         reverseArray();
         divisibleNumber();
+        planVacation();
     }
 
     public static void calculateTriangle() {
@@ -24,8 +25,6 @@ public class Homework {
         angle1 = scanner.nextFloat();
         angle2 = scanner.nextFloat();
         angle3 = scanner.nextFloat();
-
-        String validMessage = "The triangle can be build! The type of the triangle is: ";
 
         float sumOfAngles = angle1 + angle2 + angle3;
 
@@ -136,22 +135,50 @@ public class Homework {
         System.out.println("The largest number is: " + largestNumber);
     }
 
- /*   public static void planVacation() {
-        String beach = "Beach";
-        String mountain = "Mountain";
+    public static void planVacation() {
         String vacationType;
+        double budget;
+        double dailyBudget;
+        int people;
+        int days;
+        String bulgariaDestinationMessage = "Available destination: Bulgaria";
+        String nonBulgariaDestinationMessage = "Available destination: Outside Bulgaria";
 
-       System.out.println("Please enter where you want to spend your holiday: ");
         Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Please enter vacation type:");
         vacationType = scanner.nextLine();
-        String beach1 = "Beach";
-        if (String.format("Beach")) {
-            System.out.println("Please continue with other details");
-        } else if (scanner.equals(mountain)) {
-            System.out.println("Please continue with other details");
-        } else {
-            System.out.println("There is no information about this type of vacation");
-        }*/
+
+        System.out.println("Please enter number of days:");
+        days = scanner.nextInt();
+
+        System.out.println("Please enter number of people:");
+        people = scanner.nextInt();
+
+        System.out.println("Please enter your budget:");
+        budget = scanner.nextDouble();
+
+        dailyBudget = budget / (days * people);
+
+        switch (vacationType) {
+            case "Beach":
+                if (dailyBudget < 50) {
+                    System.out.println(bulgariaDestinationMessage);
+                } else {
+                    System.out.println(nonBulgariaDestinationMessage);
+                }
+                break;
+            case "Mountain":
+                if (dailyBudget < 30) {
+                    System.out.println(bulgariaDestinationMessage);
+                } else {
+                    System.out.println(nonBulgariaDestinationMessage);
+                }
+                break;
+            default:
+                System.out.println("There is no information about this type of vacation!");
+        }
+    }
 
         public static void reverseArray() {
             int arr[] = {10, 20, 30, 40, 50};
