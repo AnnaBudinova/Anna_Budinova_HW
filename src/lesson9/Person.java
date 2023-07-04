@@ -4,38 +4,50 @@ import java.time.LocalDate;
 
 public class Person {
     private final String name;
-    private final String sex;
     private final String religion;
-    private final String languageSpoken;
-    private boolean job;
+    private final String language;
     private final String nationality;
+    private String sex;
+    private boolean hasJob;
     private String egn;
-    private String dateOfBirth;
+    private String birthDate;
     private int age;
-    private String countryOfResidence;
+    private String country;
 
-    public Person(String name, String sex, String religion, String languageSpoken, boolean job, String nationality, String egn, String countryOfResidence) {
+    public Person(String name, String sex, String religion, String language, boolean hasJob, String nationality, String egn, String country) {
         this.name = name;
-        this.sex = sex;
+        setSex(sex);
         this.religion = religion;
-        this.languageSpoken = languageSpoken;
-        this.job = job;
+        this.language = language;
+        this.hasJob = hasJob;
         this.nationality = nationality;
         setEgn(egn);
-        setDateOfBirth(egn);
+        setBirthDate(egn);
         setAge(egn);
-        this.countryOfResidence = countryOfResidence;
+        this.country = country;
+    }
+
+    private void setAge(String egn) {
+        String birthYear = "19" + egn.substring(0, 2);
+        int currentYear = LocalDate.now().getYear();
+        this.age = currentYear - Integer.parseInt(birthYear);
+    }
+
+    private void setBirthDate(String egn) {
+        String month = egn.substring(2, 4);
+        String date = egn.substring(4, 6);
+        this.birthDate = month + "-" + date;
     }
 
     private void setEgn(String egn) {
-        if (egn.length() == 10 && setOnlyDigits(egn)) {
+        if (egn.length() == 10 && containsOnlyDigits(egn)) {
             this.egn = egn;
         } else {
-            throw new RuntimeException("The provided EGN is not valid!");
+            throw new RuntimeException("The provided EGN is not valid! The EGN must contain only 10 digits!");
         }
     }
 
-    private boolean setOnlyDigits(String str) {
+    private boolean containsOnlyDigits(String str) {
         try {
             Long.parseLong(str);
             return true;
@@ -44,29 +56,27 @@ public class Person {
         }
     }
 
-    public void setDateOfBirth(String egn) {
-        String date = egn.substring(4, 6);
-        String mount = egn.substring(2, 4);
-        this.dateOfBirth = mount + "-" + date;
+
+    private void setSex(String sex) {
+        try {
+            validateSex(sex);
+            this.sex = sex;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public void setAge(String egn) {
-        String birthYear = "19" + egn.substring(0, 2);
-        int currentYear = LocalDate.now().getYear();
-        this.age = currentYear - Integer.parseInt(birthYear);
+    private void validateSex(String sex) throws Exception {
+        String male = "Male";
+        String female = "Female";
+
+        if (!sex.equalsIgnoreCase(male) && !sex.equalsIgnoreCase(female)) {
+            throw new Exception("Please provide a valid value for sex. Valid options are 'male' or 'female'");
+        }
     }
 
     public void sayHello() {
-        switch (languageSpoken) {
-            case "Bulgarian":
-                System.out.println("Здравей");
-                break;
-            case "Italian":
-                System.out.println("Ciao");
-                break;
-            default:
-                System.out.println("Hello");
-        }
+        System.out.println("Hello!");
     }
 
     public void celebrateEaster() {
@@ -82,24 +92,27 @@ public class Person {
         }
     }
 
-    public void isAdult() {
-        switch (countryOfResidence) {
+    public boolean isAdult() {
+        switch (country) {
+            case "Bulgaria":
+            case "Italy":
+                return age >= 18;
             case "USA":
-                if (age >= 21) {
-                    System.out.println("You are adult.");
-                }
-                break;
+                return age >= 21;
             default:
-                if (age >= 18) {
-                    System.out.println("You are adult.");
-                }
+                throw new RuntimeException("We don't have information about country: " + country);
         }
     }
-    public void canTakeLoan(){
-        if (job == true) {
-            System.out.println("You can take loan.");
-        } else {
-            System.out.println("You cannot take loan.");
-        }
+
+    public boolean canTakeLoan() {
+        return hasJob;
+    }
+
+    public void setHasJob(boolean hasJob) {
+        this.hasJob = hasJob;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
