@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Homework {
     public static void main(String[] args) {
     }
-
     public static double findSmallestNumber(double num1, double num2, double num3) {
         double smallestNumber = num1;
 
