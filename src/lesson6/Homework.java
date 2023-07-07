@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Homework {
     public static void main(String[] args) {
     }
+
     public static double findSmallestNumber(double num1, double num2, double num3) {
         double smallestNumber = num1;
 
@@ -26,13 +27,17 @@ public class Homework {
         int position;
         int length;
 
+        //If the length of the string is even there will be two middle characters.
         if (value.length() % 2 == 0) {
             position = value.length() / 2 - 1;
             length = 2;
+
         } else {
+            //If the length of the string is odd there will be one middle character.
             position = value.length() / 2;
             length = 1;
         }
+
         System.out.println(value.substring(position, position + length));
     }
 
@@ -42,7 +47,7 @@ public class Homework {
         int textLength = text.length();
 
         if (textLength > 1) {
-            count++;
+            count++; //After trim() the text will always start with a word
 
             for (int i = 1; i < textLength; i++) {
                 if (text.charAt(i) == ' ') {
@@ -50,11 +55,14 @@ public class Homework {
                 }
             }
         }
+
         return count;
     }
+
     public static boolean isEven(int num) {
         return num % 2 == 0;
     }
+
     public static boolean isPalindrome() {
         int remainder;
         int sum = 0;
