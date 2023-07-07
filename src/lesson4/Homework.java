@@ -179,6 +179,7 @@ public class Homework {
                 System.out.println("There is no information about this type of vacation!");
         }
     }
+
         public static void reverseArray() {
             int arr[] = {10, 20, 30, 40, 50};
             for (int i = arr.length - 1; i >= 0; i--) {
