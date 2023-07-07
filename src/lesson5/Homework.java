@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class Homework {
     public static void main(String[] args) {
-
-        isPalindrome();
     }
 
     public static void sumArray() {
@@ -40,6 +38,29 @@ public class Homework {
         }
     }
 
+    public static void matrix2dOptimized (){
+        byte[][] matrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9},
+                {10, 11, 12}
+        };
+        for (byte row = 0; row < matrix.length; row++) {
+            for (byte col = 0; col < matrix[0].length; col++) {
+                System.out.printf("%d ", matrix[row][col]);
+            }
+        }
+
+        System.out.println();
+
+        for (byte[] row : matrix) {
+            for (int col = 0; col < row.length; col++) {
+                System.out.printf("%d ", row[col]);
+            }
+        }
+
+    }
+
     public static void arrayInput() {
         Scanner input = new Scanner(System.in);
         System.out.println("Please enter number of rows: ");
@@ -55,6 +76,7 @@ public class Homework {
                 matrix[row][column] = input.nextInt();
             }
         }
+        System.out.println("The matrix is created: " + Arrays.deepToString(matrix));
     }
 
     public static void biggestNumber() {
@@ -63,16 +85,16 @@ public class Homework {
 
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > number) number = arr[i];
-            System.out.println("The biggest number is : " + number);
         }
+        System.out.println("The biggest number is : " + number);
     }
 
     public static void reverseElements() {
         LinkedList<Integer> value = new LinkedList<>();
-        value.add(Integer.valueOf(7));
-        value.add(Integer.valueOf(10));
-        value.add(Integer.valueOf(3));
-        value.add(Integer.valueOf(5));
+        value.add(7);
+        value.add(10);
+        value.add(3);
+        value.add(5);
 
         for (int i = 0; i < value.size() / 2; i++) {
             String temp = String.valueOf(value.get(i));
@@ -105,6 +127,27 @@ public class Homework {
 
         System.out.println("The sum of the first diagonal is is: " + sum1);
         System.out.println("The sum of the second diagonal is is: " + sum2);
+    }
+    public static void sumMatrixDiagonal() {
+        int[][] matrix = {
+                {10, 5, 6, 20},
+                {1, 10, 20, 4},
+                {11, 20, 10, 14},
+                {20, 24, 25, 10}
+        };
+        int matrixSize = 4;
+
+        int principalDiagonal = 0, secondaryDiagonal = 0;
+        for (int row = 0; row < matrixSize; row++) {
+            for (int col = 0; col < matrixSize; col++) {
+                if (row == col)
+                    principalDiagonal += matrix[row][col];
+                if ((row + col) == (matrixSize - 1))
+                    secondaryDiagonal += matrix[row][col];
+            }
+        }
+        System.out.println(" The sum of principal diagonal is: " + principalDiagonal);
+        System.out.println(" The sum of secondary diagonal is: " + secondaryDiagonal);
     }
 
     public static void isPalindrome(){
